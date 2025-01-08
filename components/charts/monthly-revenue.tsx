@@ -9,7 +9,7 @@ type MonthlyData = {
 
 const generateMonthlyData = (): MonthlyData[] => {
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-  return months.map(name => ({
+  return months.map(name => ({  
     name,
     total: Math.floor(Math.random() * 5000) + 1000
    
