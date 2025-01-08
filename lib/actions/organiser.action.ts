@@ -1,4 +1,4 @@
-"user server"
+"use server"
 
 import Organiser from "../modals/organiser.modal"
 import {connect} from "../db"
