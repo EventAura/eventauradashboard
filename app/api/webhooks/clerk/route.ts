@@ -6,6 +6,8 @@ import {Webhook} from "svix";
 
 import { createOrganiser } from "@/lib/actions/organiser.action";
 
+
+
 export async function POST(req: Request) {
     const SIGNING_SECRET = process.env.SIGNING_SECRET
 
@@ -67,13 +69,15 @@ export async function POST(req: Request) {
 
         const newOrganiser = await createOrganiser(organiser);
 
-        if (newOrganiser) {
-            await clerkClient.users.update(id, {
-                metadata: {
-                    userId: newOrganiser._id
-                }
-            })
-        }
+            const client = clerkClient();
+
+            if(newOrganiser){
+                (await client).users.updateUserMetadata(id,{
+                    publicMetadata:{
+                        organiserId: newOrganiser._id
+                    }
+                })
+            }
 
         return NextResponse.json({ message: "Organiser created successfully" }, { status: 200 })
   }
