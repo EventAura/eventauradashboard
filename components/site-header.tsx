@@ -11,7 +11,7 @@ export function SiteHeader() {
   const { userId } = useAuth()
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
+      <div className="container flex h-14 items-center justify-between">
         <div className="flex flex-1 items-center gap-x-4">
           <Link href="/landing" className="flex items-center space-x-2 ml-5">
             <span className="font-bold">
@@ -26,7 +26,7 @@ export function SiteHeader() {
           
         </div>
 
-        <div className="flex items-center gap-x-2 mr-5">
+        <div className="flex items-center gap-x-2 ml-5">
           <UserButton />
           {/* <SignOutButton/> */}
         </div>

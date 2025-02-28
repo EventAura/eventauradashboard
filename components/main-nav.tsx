@@ -161,16 +161,17 @@ export function MainNav() {
       href: `${baseHref}/dashboard/users`,
       icon: Users,
     },
+    
     {
-      title: "Apps",
-      href: "/apps",
+      title: "Financial Reports",
+      href: `${baseHref}/dashboard/financialReports`,
       icon: AppWindow,
     },
     {
-      title: "Chats",
-      href: "/chats",
+      title: "Edit Event",
+      href: `${baseHref}/dashboard/editEvent`,
       icon: MessageSquare,
-      badge: 3,
+      
     },
   ]
 
@@ -217,10 +218,10 @@ export function MainNav() {
             <span>Settings</span>
           </Link>
           <Link
-            href="/help"
+            href={`${baseHref}/dashboard/helpCenter`}
             className={cn(
               "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-              pathname === "/help" ? "bg-accent" : "transparent"
+              pathname === `${baseHref}/dashboard/users` ? "bg-accent" : "transparent"
             )}
           >
             <HelpCircle className="h-4 w-4" />
