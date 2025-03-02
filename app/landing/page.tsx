@@ -3,7 +3,6 @@ import React from 'react'
 
 
 import Link from 'next/link'
-import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from "next/navigation"
 import { TypewriterEffect } from '@/components/ui/typewriter-effect'
 import { cn } from '@/lib/utils'
