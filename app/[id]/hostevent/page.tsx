@@ -121,9 +121,9 @@ const EventOnboardingForm = () => {
     const newQuestions = [...eventQuestions];
 
     // Ensure options is defined
-    if (newQuestions[index].options) {
-      newQuestions[index].options = newQuestions[index].options.filter((_, i) => i !== optionIndex);
-    }
+    // if (newQuestions[index].options) {
+    //   newQuestions[index].options = newQuestions[index].options.filter((_, i) => i !== optionIndex);
+    // }
 
     setEventQuestions(newQuestions);
   };
