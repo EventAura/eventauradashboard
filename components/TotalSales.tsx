@@ -67,11 +67,29 @@
 
 import React, { useMemo } from "react";
 
-const countParticipantsBetweenDates = (participants, startDate, endDate) => {
+interface PaymentDataData {
+  amount: number;
+  state: string;
+}
+
+interface PaymentData {
+  data: PaymentDataData;
+}
+
+export interface Participant {
+  userRegistrationDate: string;
+  paymentData?: PaymentData;
+}
+
+const countParticipantsBetweenDates = (
+  participants: Participant[],
+  startDate: string,
+  endDate: string
+): Participant[] => {
   const start = new Date(startDate);
   const end = new Date(endDate);
 
-  return participants.filter((participant) => {
+  return participants.filter((participant: Participant) => {
     const registrationDate = new Date(participant.userRegistrationDate);
     return (
       registrationDate >= start &&
@@ -81,23 +99,29 @@ const countParticipantsBetweenDates = (participants, startDate, endDate) => {
   });
 };
 
-const calculateTotalRevenue = (filteredParticipants) => {
+const calculateTotalRevenue = (filteredParticipants: Participant[]): number => {
   let totalRevenue = 0;
 
-  filteredParticipants.forEach((participant) => {
-    const amount = Math.floor(participant.paymentData.data.amount / 100);
+  filteredParticipants.forEach((participant: Participant) => {
+    // paymentData is ensured to exist via filtering in countParticipantsBetweenDates
+    const amount: number = Math.floor(participant.paymentData!.data.amount / 100);
     totalRevenue += amount;
   });
 
   // Deduct 2% and a fixed fee of ₹5 per participant
-  const percentageDeduction = totalRevenue * 0.02;
-  const fixedDeduction = filteredParticipants.length * 5;
-  const finalTotal = totalRevenue - (percentageDeduction + fixedDeduction);
+  const percentageDeduction: number = totalRevenue * 0.02;
+  const fixedDeduction: number = filteredParticipants.length * 5;
+  const finalTotal: number = totalRevenue - (percentageDeduction + fixedDeduction);
 
   return finalTotal;
 };
 
-const TotalSales = ({ eventData, participants }) => {
+interface EventData {
+  eventCreatedDate: string;
+  eventLastDate: string;
+}
+
+const TotalSales = ({ eventData, participants }: { eventData: EventData | null, participants: Participant[] }) => {
   const totalSales = useMemo(() => {
     if (!eventData || !participants.length) return null;
 

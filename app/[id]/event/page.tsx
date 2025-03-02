@@ -146,7 +146,6 @@ import axios from "axios";
 import { useAuth } from "@clerk/nextjs";
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, User } from 'lucide-react';
 import { ThemeProvider } from "@/components/theme-provider";
@@ -157,7 +156,16 @@ import { format } from 'date-fns';
 
 export default function Event() {
   const { userId } = useAuth();
-  const [eventData, setEventData] = useState([]);
+  interface EventData {
+    _id: string;
+    eventName: string;
+    eventDate: string;
+    eventHostedBy: string;
+    eventVenue?: string;
+    clerkId: string;
+  }
+
+  const [eventData, setEventData] = useState<EventData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

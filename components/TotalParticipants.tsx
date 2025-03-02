@@ -48,7 +48,7 @@
 
 import React, { useMemo } from "react";
 
-const TotalParticipants = ({ participants }) => {
+const TotalParticipants = ({ participants }: { participants: any[] }) => {
   // Memoize the filtered list of paid participants
   const paidParticipantsCount = useMemo(() => {
     return participants.filter(

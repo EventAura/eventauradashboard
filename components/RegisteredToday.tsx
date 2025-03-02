@@ -1,8 +1,19 @@
 import { useEffect, useState } from "react";
 
-const countParticipantsRegisteredToday = (participants) => {
+interface PaymentData {
+  data: {
+    state: string;
+  };
+}
+
+interface Participant {
+  userRegistrationDate: string;
+  paymentData?: PaymentData;
+}
+
+const countParticipantsRegisteredToday = (participants: Participant[]): number => {
   const today = new Date();
-  return participants.filter((participant) => {
+  return participants.filter((participant: Participant) => {
     const registrationDate = new Date(participant.userRegistrationDate);
     return (
       registrationDate.toDateString() === today.toDateString() &&
@@ -11,7 +22,11 @@ const countParticipantsRegisteredToday = (participants) => {
   }).length;
 };
 
-const ParticipantsRegisteredToday = ({ eventData, participants }) => {
+interface EventData {
+  eventLastDate: string;
+}
+
+const ParticipantsRegisteredToday = ({ eventData, participants }: { eventData: EventData; participants: Participant[] }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [totalParticipantsToday, setTotalParticipantsToday] = useState(0);
   const [isEventClosed, setIsEventClosed] = useState(false);

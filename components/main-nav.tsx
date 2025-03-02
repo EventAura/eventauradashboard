@@ -135,7 +135,7 @@ export function MainNav() {
   const pathname = usePathname()
   
   // Client-side state to store router query parameters
-  const [routerQuery, setRouterQuery] = useState({ clerkId: null, eventId: null })
+  const [routerQuery, setRouterQuery] = useState<{ clerkId: string | null, eventId: string | null }>({ clerkId: null, eventId: null })
 
   // Using useEffect to only access router after the component is mounted
   useEffect(() => {
@@ -150,7 +150,7 @@ export function MainNav() {
   // Constructing the base path
   const baseHref = clerkId && eventId ? `/${userId}/event/${eventId}` : "/"
 
-  const items = [
+  const items: { title: string; href: string; icon: typeof LayoutDashboard; badge?: number }[] = [
     {
       title: "Dashboard",
       href: `${baseHref}/dashboard`,

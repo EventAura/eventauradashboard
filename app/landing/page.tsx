@@ -95,17 +95,14 @@ const  landing =  () => {
             <MainMenusGradientCard
               title="Event Management"
               description="Create, edit, and delete events with ease."
-              icon="calendar"
             />
             <MainMenusGradientCard
               title="User Management"
               description="Manage users and their roles."
-              icon="users"
             />
             <MainMenusGradientCard
               title="Analytics"
               description="Get insights into your events and users."
-              icon="chart-pie"
             />
             
           </div>

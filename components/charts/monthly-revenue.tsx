@@ -161,7 +161,7 @@ const getParticipantsDataForRecharts = (participants: any): ParticipantData[] =>
   const { labels, data } = getParticipantsByDate(participants);
   return labels.map((label: string, index: number) => ({
     date: label,
-    total: data[index],
+    total: data[index] as number,
   }));
 };
 

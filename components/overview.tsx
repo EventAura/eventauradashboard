@@ -2,6 +2,10 @@
 
 import  {MonthlyRevenue}  from "@/components/charts/monthly-revenue"
 
-export function Overview({participants}) {
+interface OverviewProps {
+  participants: any;
+}
+
+export function Overview({participants}: OverviewProps) {
   return <MonthlyRevenue participants={participants}/>
 }
