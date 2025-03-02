@@ -1,15 +1,6 @@
-// 'use client'
-import { redirect } from "next/navigation"
-import landing from "./landing/page"
-// import { useAuth } from "@clerk/nextjs"
+import { redirect } from "next/navigation";
 
-export default  function Home() {
-  // const  {userId}=  useAuth()
-
-  
-    redirect("/landing")
-    
-
-  
-
+export default function Home() {
+  // Redirect to the landing page without using any client-side authentication
+  redirect("/landing");
 }
