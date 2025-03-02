@@ -17,7 +17,7 @@ import RegisteredToday from "@/components/RegisteredToday";
 import { intersects } from "react-resizable-panels";
 
 export default function DashboardPage() {
-  const [eventData, setEventData] = useState<eventData | null>(null);
+  const [eventData, setEventData] = useState<EventData | null>(null);
   const [clerkId, setClerkId] = useState<string | null>(null);
   const [eventId, setEventId] = useState<string | null>(null);
   const [participants, setParticipants] = useState([]);
@@ -25,9 +25,11 @@ export default function DashboardPage() {
   const params = useParams();
 
 
-  interface eventData {
+  interface EventData {
     eventName: string;
     eventDate: string;
+    eventCreatedDate: string;
+    eventLastDate: string;
   }
 
   // Extract and set clerkId and eventId from unwrapped params
@@ -107,7 +109,7 @@ export default function DashboardPage() {
             <CreditCard className="h-4 w-4 text-muted-foreground text-gray-500" />
           </CardHeader>
           <CardContent>
-            <RegisteredToday eventData={eventData} participants={participants} />
+            {eventData && <RegisteredToday eventData={eventData} participants={participants} />}
           </CardContent>
         </Card>
         <Card>
