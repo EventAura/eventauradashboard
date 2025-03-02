@@ -1,8 +1,3 @@
-
-
-
-
-
 'use client'
 
 import React, { useState } from "react"
@@ -114,7 +109,8 @@ const EventOnboardingForm = () => {
   const handleAddOption = (index: number) => {
     const newQuestions = [...eventQuestions]
     if (newQuestions[index].options) {
-      newQuestions[index].options?.push(`Option ${newQuestions[index].options.length + 1}`)
+      // Removed optional chaining on options as it's already checked
+      newQuestions[index].options.push(`Option ${newQuestions[index].options.length + 1}`)
     }
     setEventQuestions(newQuestions)
   }
